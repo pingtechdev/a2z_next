@@ -1,0 +1,48 @@
+/* Background Moving Animation */
+.bg-image-moving {
+  animation: moveBackground 60s linear infinite;
+}
+
+@keyframes moveBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Motorcycle Driving Animation */
+.motorcycle-animation {
+  animation: motorcycleDrive 25s linear infinite;
+  position: relative;
+  top: 100px; /* Move motorcycle down */
+  transition: transform 0.3s ease-out;
+  cursor: pointer;
+}
+
+@keyframes motorcycleDrive {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-150%);
+  }
+}
+
+/* Additional hover effect for motorcycle */
+.motorcycle-animation:hover {
+  animation-play-state: paused;
+  transition: transform 0.1s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .motorcycle-animation {
+    animation: motorcycleDrive 20s linear infinite;
+    top: 50px; /* Less offset on mobile */
+  }
+}

@@ -1,26 +1,446 @@
-@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-sora: "Inter", sans-serif;
+  --font-code: "JetBrains Mono", monospace;
+  --font-grotesk: "Poppins", sans-serif;
+  color-scheme: light;
+  
+  /* Blue & Yellow Theme - Light Mode */
+  --background: 0 0% 100%;
+  --foreground: 222 47% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
+  --primary: 45 100% 50%;
+  --primary-foreground: 222 47% 11%;
+  --secondary: 221 83% 53%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 16% 47%;
+  --accent: 221 83% 53%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 214 32% 91%;
+  --input: 214 32% 91%;
+  --ring: 45 100% 50%;
+  --radius: 0.75rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    @apply overflow-x-hidden;
+    max-width: 100vw;
+    position: relative;
+  }
+  
+  body {
+    @apply font-sans bg-white text-gray-900 text-base overflow-x-hidden;
+    max-width: 100vw;
+    position: relative;
+  }
+  
+  /* Container utilities */
+  .container {
+    @apply px-4 mx-auto;
+    max-width: 100%;
+  }
+  
+  @media (min-width: 640px) {
+    .container {
+      max-width: 640px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .container {
+      max-width: 768px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .container {
+      max-width: 1024px;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    .container {
+      max-width: 1280px;
+    }
+  }
+  
+  @media (min-width: 1536px) {
+    .container {
+      max-width: 1536px;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.rotate-45 {
+  @apply rotate-[45deg];
+}
+
+.rotate-90 {
+  @apply rotate-[90deg];
+}
+
+.rotate-135 {
+  @apply rotate-[135deg];
+}
+
+.rotate-180 {
+  @apply rotate-[180deg];
+}
+
+.rotate-225 {
+  @apply rotate-[225deg];
+}
+
+.rotate-270 {
+  @apply rotate-[270deg];
+}
+
+.rotate-315 {
+  @apply rotate-[315deg];
+}
+
+.rotate-360 {
+  @apply rotate-[360deg];
+}
+
+.-rotate-45 {
+  @apply rotate-[-45deg];
+}
+
+.-rotate-90 {
+  @apply rotate-[-90deg];
+}
+
+.-rotate-135 {
+  @apply rotate-[-135deg];
+}
+
+.-rotate-180 {
+  @apply rotate-[-180deg];
+}
+
+.-rotate-225 {
+  @apply rotate-[-225deg];
+}
+
+.-rotate-270 {
+  @apply rotate-[-270deg];
+}
+
+.-rotate-315 {
+  @apply rotate-[-315deg];
+}
+
+.-rotate-360 {
+  @apply rotate-[-360deg];
+}
+
+/* Custom Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-left {
+  animation: fadeInLeft 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-right {
+  animation: fadeInRight 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+
+.animation-delay-800 {
+  animation-delay: 800ms;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1000ms;
+}
+
+.animation-delay-1200 {
+  animation-delay: 1200ms;
+}
+
+/* Enhanced Scroll Animations */
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes rotateIn {
+  from {
+    opacity: 0;
+    transform: rotate(-180deg) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(37, 99, 235, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.6), 0 0 30px rgba(37, 99, 235, 0.4);
+  }
+}
+
+.animate-slide-in-bottom {
+  animation: slideInFromBottom 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-slide-in-top {
+  animation: slideInFromTop 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-slide-in-left {
+  animation: slideInFromLeft 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-slide-in-right {
+  animation: slideInFromRight 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-rotate-in {
+  animation: rotateIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-pulse-glow {
+  animation: pulse 2s ease-in-out infinite, glow 2s ease-in-out infinite;
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
+}
+
+/* Stagger animation delays */
+.stagger-1 { animation-delay: 100ms; }
+.stagger-2 { animation-delay: 200ms; }
+.stagger-3 { animation-delay: 300ms; }
+.stagger-4 { animation-delay: 400ms; }
+.stagger-5 { animation-delay: 500ms; }
+.stagger-6 { animation-delay: 600ms; }
+
+/* Brand Effects - Blue & Yellow (No Gradients) */
+.gradient-text {
+  color: #2563EB;
+}
+
+.gradient-bg {
+  background: rgba(37, 99, 235, 0.05);
+}
+
+.gradient-border {
+  position: relative;
+  background: #2563EB;
+}
+
+.gradient-glow {
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.2);
+}
+
+.gradient-glow-hover:hover {
+  box-shadow: 0 0 30px rgba(37, 99, 235, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Animated background */
+.animate-gradient {
+  background: #2563EB;
+}
+
+/* Overlay */
+.gradient-overlay {
+  background: rgba(37, 99, 235, 0.03);
 }
