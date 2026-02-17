@@ -11,7 +11,6 @@ const Footer = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  // Map section IDs to routes
   const sectionToRoute: Record<string, string> = {
     'hero': '/',
     'about': '/about',
@@ -31,18 +30,17 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-secondary text-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          {/* Brand */}
-          <div className="lg:col-span-1">
+    <footer className="bg-secondary text-white overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 max-w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 mb-8">
+          <div className="lg:col-span-1 min-w-0">
             <div className="flex items-center gap-2 mb-4 cursor-pointer" onClick={() => router.push('/')}>
-              <Image src="/assets/new_logo.png" alt="A2Z Delivery" width={96} height={96} className="h-16 w-auto sm:h-20 md:h-24" />
-              <span className="text-xl font-bold leading-tight">
+              <Image src="/assets/new_logo.png" alt="A2Z Delivery" width={96} height={96} className="h-14 w-auto sm:h-20 md:h-24 flex-shrink-0" />
+              <span className="text-lg sm:text-xl font-bold leading-tight break-words">
                 <span className="text-primary">A2Z</span> Delivery<br />Services
               </span>
             </div>
-            <p className="text-white/80 mb-4 text-sm">
+            <p className="text-white/80 mb-4 text-xs sm:text-sm">
               Lebanon’s Trusted Delivery Partner since 2016.
             </p>
             <div className="flex gap-3">
@@ -65,10 +63,9 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2 text-sm">
+          <div className="min-w-0">
+            <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Quick Links</h3>
+            <ul className="space-y-2 text-xs sm:text-sm">
               <li>
                 <button onClick={() => router.push('/')} className="text-white/80 hover:text-primary transition-colors">Home</button>
               </li>
@@ -87,10 +84,9 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Legal */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Legal</h3>
-            <ul className="space-y-2 text-sm">
+          <div className="min-w-0">
+            <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Legal</h3>
+            <ul className="space-y-2 text-xs sm:text-sm">
               <li>
                 <button onClick={() => navigateToPage('/privacy-policy')} className="text-white/80 hover:text-primary transition-colors">Privacy Policy</button>
               </li>
@@ -100,10 +96,9 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">{t('contact.title')}</h3>
-            <ul className="space-y-3 text-white/80 text-sm">
+          <div className="min-w-0">
+            <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">{t('contact.title')}</h3>
+            <ul className="space-y-3 text-white/80 text-xs sm:text-sm break-words">
               <li>
                 <div className="font-medium text-white mb-1">{t('contact.phone')}</div>
                 <div className="flex flex-col gap-1">
@@ -124,8 +119,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-8 text-center text-white/60 text-sm">
-          <p>&copy; {new Date().getFullYear()} A2Z Delivery Services. {t('footer.rights')}</p>
+        <div className="border-t border-white/10 pt-6 sm:pt-8 text-center text-white/60 text-xs sm:text-sm px-2">
+          <p className="break-words">&copy; {new Date().getFullYear()} A2Z Delivery Services. {t('footer.rights')}</p>
         </div>
       </div>
     </footer>

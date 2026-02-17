@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from "react";
-import { Menu, X, Languages } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
@@ -9,7 +9,7 @@ import { disablePageScroll, enablePageScroll } from "scroll-lock";
 import Image from "next/image";
 
 const Navbar = () => {
-  const { language, toggleLanguage, t } = useLanguage();
+  const { t } = useLanguage();
   const router = useRouter();
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,7 +33,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Map section IDs to routes
   const sectionToRoute: Record<string, string> = {
     'hero': '/',
     'home': '/',
@@ -51,7 +50,6 @@ const Navbar = () => {
       setOpenNavigation(false);
     }
 
-    // Navigate to the route (this will trigger scroll in Index component)
     router.push(route);
   };
 
@@ -64,8 +62,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 shadow-md`}>
-      {/* Main Navbar */}
+    <div className="fixed top-0 left-0 w-full z-50 transition-all duration-300 shadow-md">
       <div className="bg-blue-600 border-b border-blue-500 relative">
         <div className="flex items-center justify-between w-full max-w-full px-2 sm:px-3 md:px-5 lg:px-7.5 xl:px-10 py-2.5 sm:py-3">
           <Link href="/" className="flex items-center gap-2 sm:gap-3 flex-shrink-0 z-10">
@@ -130,7 +127,6 @@ const Navbar = () => {
                 Login
               </a>
 
-              {/* Mobile-only contact info */}
               <div className="lg:hidden flex flex-col items-center gap-4 mt-4 pb-8 text-gray-600 text-sm">
                 <div className="flex flex-col items-center gap-2">
                   <a href="tel:+9613954689">+961 3 954689</a>
@@ -139,17 +135,6 @@ const Navbar = () => {
               </div>
             </div>
           </nav>
-
-          {/* <div className="hidden lg:flex items-center gap-3">
-
-            <button
-              onClick={toggleLanguage}
-              className="text-white hover:text-yellow-400 transition-colors"
-              title={language === 'en' ? 'Switch to Arabic' : 'Switch to English'}
-            >
-              <Languages className="w-5 h-5" />
-            </button>
-          </div> */}
 
           <button
             className="lg:hidden text-white flex-shrink-0 p-1"

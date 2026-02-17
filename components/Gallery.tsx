@@ -29,10 +29,7 @@ const Gallery = () => {
   const imagesPerPage = 2;
   const totalPages = Math.ceil(galleryImages.length / imagesPerPage);
 
-  useEffect(() => {
-    console.log("Gallery component mounted, total images:", galleryImages.length);
-    setIsVisible(true);
-  }, []);
+  useEffect(() => setIsVisible(true), []);
 
   const next = () => {
     setCurrentPage((prev) => (prev + 1) % totalPages);

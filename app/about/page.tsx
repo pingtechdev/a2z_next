@@ -13,19 +13,15 @@ import Footer from "@/components/Footer";
 
 export default function AboutPage() {
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const element = document.getElementById('about');
-      if (element) {
-        const offset = 80;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset;
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
+    const scroll = () => {
+      const el = document.getElementById('about');
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: 'auto' });
       }
-    }, 100);
-    return () => clearTimeout(timer);
+    };
+    const id = requestAnimationFrame(() => requestAnimationFrame(scroll));
+    return () => cancelAnimationFrame(id);
   }, []);
 
   return (

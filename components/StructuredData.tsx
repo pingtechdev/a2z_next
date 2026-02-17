@@ -2,8 +2,7 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-
-const SITE_URL = "https://www.a2zservices-lb.com"; // Update with your actual domain
+import { SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/site-config";
 
 interface StructuredDataProps {
   type?: "home" | "about" | "track" | "service";
@@ -27,7 +26,7 @@ export const StructuredData = ({ type = "home", serviceName, serviceDescription 
       "name": "A2Z Delivery Services",
       "alternateName": "A2Z Services",
       "url": SITE_URL,
-      "logo": `${SITE_URL}/src/assets/new_logo.png`,
+      "logo": DEFAULT_OG_IMAGE,
       "description": "Lebanon's leading logistics provider offering comprehensive delivery solutions from warehousing to last-mile delivery since 2016.",
       "foundingDate": "2016",
       "address": {
@@ -56,7 +55,7 @@ export const StructuredData = ({ type = "home", serviceName, serviceDescription 
       "@type": "LocalBusiness",
       "@id": `${SITE_URL}#business`,
       "name": "A2Z Delivery Services",
-      "image": `${SITE_URL}/src/assets/new_logo.png`,
+      "image": DEFAULT_OG_IMAGE,
       "description": "Professional delivery and logistics services in Lebanon. Offering same-day delivery, COD services, fulfillment, warehousing, and packaging solutions.",
       "url": SITE_URL,
       "telephone": "+961-3-954689",

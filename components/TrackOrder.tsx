@@ -12,7 +12,6 @@ const TrackOrder = () => {
 
     const handleTrack = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Tracking order:", orderNumber);
     };
 
     return (

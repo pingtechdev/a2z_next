@@ -13,19 +13,15 @@ import Footer from "@/components/Footer";
 
 export default function ServicesPage() {
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const element = document.getElementById('services');
-      if (element) {
-        const offset = 80;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset;
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
+    const scroll = () => {
+      const el = document.getElementById('services');
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: 'auto' });
       }
-    }, 100);
-    return () => clearTimeout(timer);
+    };
+    const id = requestAnimationFrame(() => requestAnimationFrame(scroll));
+    return () => cancelAnimationFrame(id);
   }, []);
 
   return (

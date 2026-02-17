@@ -16,7 +16,6 @@ export default function Home() {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Map routes to section IDs
     const routeToSectionId: Record<string, string> = {
       '/about': 'about',
       '/services': 'services',
@@ -24,29 +23,23 @@ export default function Home() {
       '/contact': 'contact',
       '/': 'hero'
     };
-
     const sectionId = routeToSectionId[pathname] || 'hero';
-    
-    // Scroll to section after a short delay to ensure DOM is ready
-    const timer = setTimeout(() => {
+
+    const scrollToSection = () => {
       if (sectionId === 'hero') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          const offset = 80; // Account for fixed navbar
-          const elementPosition = element.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-        }
+        window.scrollTo({ top: 0, behavior: 'auto' });
+        return;
       }
-    }, 100);
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const offset = 80;
+        const offsetPosition = element.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: offsetPosition, behavior: 'auto' });
+      }
+    };
 
-    return () => clearTimeout(timer);
+    const id = requestAnimationFrame(() => requestAnimationFrame(scrollToSection));
+    return () => cancelAnimationFrame(id);
   }, [pathname]);
 
   return (

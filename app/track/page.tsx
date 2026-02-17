@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -135,37 +136,35 @@ export default function Track() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-secondary/10 to-accent/10">
-      {/* Hero Section */}
-      <section className="pt-32 pb-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <Navbar />
+      <section className="pt-[5.5rem] sm:pt-[6.5rem] md:pt-[7.5rem] lg:pt-32 pb-12 sm:pb-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-full">
           <motion.div
             initial="hidden"
             animate={isVisible ? "visible" : "hidden"}
             variants={staggerContainer}
             className="max-w-6xl mx-auto"
           >
-            {/* Header */}
-            <motion.div variants={fadeInUp} className="text-center mb-12">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-blue-600">
+            <motion.div variants={fadeInUp} className="text-center mb-8 sm:mb-12 px-2">
+              <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 text-blue-600">
                 Track your order
               </h1>
-              <p className="text-xl sm:text-2xl text-gray-700 font-medium">
+              <p className="text-base sm:text-xl md:text-2xl text-gray-700 font-medium max-w-xl mx-auto">
                 Know where your delivery is – anytime, anywhere.
               </p>
             </motion.div>
 
             <div className="max-w-4xl mx-auto mb-12">
               <motion.div variants={fadeInUp} className="space-y-6">
-                {/* Tracking Form - Always visible */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-6 sm:p-8 border border-gray-200"
+                  className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-5 sm:p-6 md:p-8 border border-gray-200"
                 >
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Tracking Number</h3>
-                  <p className="text-gray-600 mb-6">Enter your order Number</p>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Tracking Number</h3>
+                  <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">Enter your order Number</p>
                   <form onSubmit={handleTrack} className="space-y-4">
-                    <div className="flex gap-3">
+                    <div className="flex flex-col sm:flex-row gap-3">
                       <Input
                         type="text"
                         placeholder="Order Number"
@@ -175,13 +174,13 @@ export default function Track() {
                           setError(null);
                         }}
                         disabled={loading}
-                        className="flex-1 h-14 text-lg border-2 border-gray-300 focus:border-blue-500 disabled:opacity-50"
+                        className="flex-1 min-w-0 h-12 sm:h-14 text-base sm:text-lg border-2 border-gray-300 focus:border-blue-500 disabled:opacity-50"
                       />
                       <Button
                         type="submit"
                         size="lg"
                         disabled={loading}
-                        className="bg-blue-600 hover:bg-blue-700 text-white px-8 h-14 shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 h-12 sm:h-14 shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto"
                       >
                         {loading ? (
                           <>
@@ -198,7 +197,6 @@ export default function Track() {
                     </div>
                   </form>
 
-                  {/* Error Message */}
                   {error && (
                     <motion.div
                       initial={{ opacity: 0, y: -10 }}
@@ -211,7 +209,6 @@ export default function Track() {
                   )}
                 </motion.div>
 
-                {/* Tracking Results */}
                 {trackingData && (
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -226,12 +223,11 @@ export default function Track() {
                       </div>
                     </div>
 
-                    {/* Order Details */}
                     <div className="mb-6 p-4 bg-gray-50 rounded-xl border border-gray-200">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
+                        <div className="min-w-0">
                           <p className="text-sm text-gray-600 mb-1">Address</p>
-                          <p className="font-semibold text-gray-900">{trackingData.address}</p>
+                          <p className="font-semibold text-gray-900 break-words">{trackingData.address}</p>
                         </div>
                         <div>
                           <p className="text-sm text-gray-600 mb-1">Created Date</p>
@@ -244,7 +240,6 @@ export default function Track() {
                       </div>
                     </div>
 
-                    {/* Status Badge */}
                     <div className="mb-6">
                       <span className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-full font-semibold">
                         <Truck className="w-5 h-5" />
@@ -252,7 +247,6 @@ export default function Track() {
                       </span>
                     </div>
 
-                    {/* Status Updates with Dates */}
                     <div className="space-y-4">
                       {getStatusSteps(trackingData).map((step, index) => (
                         <motion.div
@@ -289,7 +283,6 @@ export default function Track() {
                       ))}
                     </div>
 
-                    {/* Expected Delivery */}
                     {!trackingData.is_delivered && (
                       <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
@@ -309,7 +302,6 @@ export default function Track() {
                   </motion.div>
                 )}
 
-                {/* Tracking Image - Below the text sections */}
                 <motion.div
                   variants={fadeInUp}
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -333,13 +325,12 @@ export default function Track() {
               </motion.div>
             </div>
 
-            {/* Contact Support Section */}
             <motion.div
               variants={fadeInUp}
-              className="bg-blue-600 rounded-2xl shadow-xl p-6 sm:p-8 text-white"
+              className="bg-blue-600 rounded-2xl shadow-xl p-6 sm:p-8 text-white overflow-hidden"
             >
-              <h3 className="text-2xl font-bold mb-2">Support/Contact</h3>
-              <p className="text-white/90 mb-6">Need help? Contact our customer service at <a href="tel:+9613954689" className="underline font-semibold hover:text-yellow-400">+961 3 954 689</a> or email <a href="mailto:info@a2zservices-lb.com" className="underline font-semibold hover:text-yellow-400">info@a2zservices-lb.com</a></p>
+              <h3 className="text-xl sm:text-2xl font-bold mb-2">Support/Contact</h3>
+              <p className="text-white/90 mb-6 text-sm sm:text-base break-words">Need help? Contact our customer service at <a href="tel:+9613954689" className="underline font-semibold hover:text-yellow-400">+961 3 954 689</a> or email <a href="mailto:info@a2zservices-lb.com" className="underline font-semibold hover:text-yellow-400 break-all">info@a2zservices-lb.com</a></p>
               
               <div className="space-y-4">
                 <a

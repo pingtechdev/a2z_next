@@ -3,8 +3,6 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Truck, Package, Warehouse, DollarSign, Zap, Play } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 
-// Removed import for videoFile, using public path /assets/story.mp4
-
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 as const } }

@@ -14,10 +14,11 @@ interface SEOProps {
   canonical?: string;
 }
 
-const SITE_URL = "https://www.a2zservices-lb.com"; // Update with your actual domain
+import { SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/site-config";
+
 const DEFAULT_TITLE = "A2Z Delivery Services - Lebanon's Trusted Logistics Partner Since 2016";
 const DEFAULT_DESCRIPTION = "Professional delivery services in Lebanon with real-time tracking, COD options, fulfillment, warehousing, and reliable logistics solutions for your business needs.";
-const DEFAULT_IMAGE = `${SITE_URL}/src/assets/new_logo.png`;
+const DEFAULT_IMAGE = DEFAULT_OG_IMAGE;
 const DEFAULT_KEYWORDS = "delivery services Lebanon, logistics Lebanon, COD delivery, same day delivery, fulfillment services, warehousing Lebanon, package delivery, courier services Lebanon, A2Z delivery";
 
 export const SEO = ({

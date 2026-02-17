@@ -51,16 +51,14 @@ const Clients = () => {
             transition={{ duration: 0.8 }}
             className="py-16 bg-white overflow-hidden"
         >
-            <div className="container mx-auto px-4 mb-10 text-center">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Trusted Clients</h2>
-                <div className="w-20 h-1 bg-yellow-500 mx-auto mb-8"></div>
+            <div className="container mx-auto px-4 mb-8 sm:mb-10 text-center">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 px-2">Our Trusted Clients</h2>
+                <div className="w-16 sm:w-20 h-1 bg-yellow-500 mx-auto mb-6 sm:mb-8"></div>
             </div>
 
             <div className="space-y-6">
-                {/* First Row */}
                 <div className="relative w-full overflow-x-hidden group py-4">
                     <div className="animate-marquee-row1 whitespace-nowrap flex items-center">
-                        {/* First set */}
                         {row1.map((client, index) => (
                             <div key={`row1-client-${index}`} className="mx-3 sm:mx-4 md:mx-6 flex-shrink-0 w-[120px] sm:w-[150px] md:w-[180px] lg:w-[200px] transition-all duration-300 hover:scale-110">
                                 <div className="flex items-center justify-center h-24 sm:h-32 md:h-40 lg:h-48 w-full">
@@ -73,7 +71,6 @@ const Clients = () => {
                                         fetchPriority="low"
                                         style={{ minHeight: '60px', minWidth: '60px' }}
                                         onError={(e) => {
-                                            console.error('Error loading image:', client.name, client.logo, e);
                                             const target = e.target as HTMLImageElement;
                                             target.style.display = 'block';
                                             target.style.opacity = '0.3';
@@ -83,7 +80,6 @@ const Clients = () => {
                                 </div>
                             </div>
                         ))}
-                        {/* Duplicate set for seamless scrolling */}
                         {row1.map((client, index) => (
                             <div key={`row1-dup-client-${index}`} className="mx-3 sm:mx-4 md:mx-6 flex-shrink-0 w-[120px] sm:w-[150px] md:w-[180px] lg:w-[200px] transition-all duration-300 hover:scale-110">
                                 <div className="flex items-center justify-center h-24 sm:h-32 md:h-40 lg:h-48 w-full">
@@ -96,7 +92,6 @@ const Clients = () => {
                                         fetchPriority="low"
                                         style={{ minHeight: '60px', minWidth: '60px' }}
                                         onError={(e) => {
-                                            console.error('Error loading image:', client.name, client.logo, e);
                                             const target = e.target as HTMLImageElement;
                                             target.style.display = 'block';
                                             target.style.opacity = '0.3';
@@ -106,7 +101,6 @@ const Clients = () => {
                                 </div>
                             </div>
                         ))}
-                        {/* Third set to ensure all images pass before loop */}
                         {row1.map((client, index) => (
                             <div key={`row1-dup2-client-${index}`} className="mx-3 sm:mx-4 md:mx-6 flex-shrink-0 w-[120px] sm:w-[150px] md:w-[180px] lg:w-[200px] transition-all duration-300 hover:scale-110">
                                 <div className="flex items-center justify-center h-24 sm:h-32 md:h-40 lg:h-48 w-full">
@@ -119,7 +113,6 @@ const Clients = () => {
                                         fetchPriority="low"
                                         style={{ minHeight: '60px', minWidth: '60px' }}
                                         onError={(e) => {
-                                            console.error('Error loading image:', client.name, client.logo, e);
                                             const target = e.target as HTMLImageElement;
                                             target.style.display = 'block';
                                             target.style.opacity = '0.3';
@@ -129,7 +122,6 @@ const Clients = () => {
                                 </div>
                             </div>
                         ))}
-                        {/* Fourth set for extra buffer */}
                         {row1.map((client, index) => (
                             <div key={`row1-dup3-client-${index}`} className="mx-3 sm:mx-4 md:mx-6 flex-shrink-0 w-[120px] sm:w-[150px] md:w-[180px] lg:w-[200px] transition-all duration-300 hover:scale-110">
                                 <div className="flex items-center justify-center h-24 sm:h-32 md:h-40 lg:h-48 w-full">
@@ -142,7 +134,6 @@ const Clients = () => {
                                         fetchPriority="low"
                                         style={{ minHeight: '60px', minWidth: '60px' }}
                                         onError={(e) => {
-                                            console.error('Error loading image:', client.name, client.logo, e);
                                             const target = e.target as HTMLImageElement;
                                             target.style.display = 'block';
                                             target.style.opacity = '0.3';
@@ -154,11 +145,8 @@ const Clients = () => {
                         ))}
                     </div>
                 </div>
-
-                {/* Second Row */}
                 <div className="relative w-full overflow-x-hidden group py-4">
                     <div className="animate-marquee-row2 whitespace-nowrap flex items-center">
-                        {/* First set */}
                         {row2.map((client, index) => (
                             <div key={`row2-client-${index}`} className="mx-3 sm:mx-4 md:mx-6 flex-shrink-0 w-[120px] sm:w-[150px] md:w-[180px] lg:w-[200px] transition-all duration-300 hover:scale-110">
                                 <div className="flex items-center justify-center h-24 sm:h-32 md:h-40 lg:h-48 w-full">
@@ -171,7 +159,6 @@ const Clients = () => {
                                         fetchPriority="low"
                                         style={{ minHeight: '60px', minWidth: '60px' }}
                                         onError={(e) => {
-                                            console.error('Error loading image:', client.name, client.logo, e);
                                             const target = e.target as HTMLImageElement;
                                             target.style.display = 'block';
                                             target.style.opacity = '0.3';
@@ -181,7 +168,6 @@ const Clients = () => {
                                 </div>
                             </div>
                         ))}
-                        {/* Duplicate set for seamless scrolling */}
                         {row2.map((client, index) => (
                             <div key={`row2-dup-client-${index}`} className="mx-3 sm:mx-4 md:mx-6 flex-shrink-0 w-[120px] sm:w-[150px] md:w-[180px] lg:w-[200px] transition-all duration-300 hover:scale-110">
                                 <div className="flex items-center justify-center h-24 sm:h-32 md:h-40 lg:h-48 w-full">
@@ -194,7 +180,6 @@ const Clients = () => {
                                         fetchPriority="low"
                                         style={{ minHeight: '60px', minWidth: '60px' }}
                                         onError={(e) => {
-                                            console.error('Error loading image:', client.name, client.logo, e);
                                             const target = e.target as HTMLImageElement;
                                             target.style.display = 'block';
                                             target.style.opacity = '0.3';
@@ -204,7 +189,6 @@ const Clients = () => {
                                 </div>
                             </div>
                         ))}
-                        {/* Third set to ensure all images pass before loop */}
                         {row2.map((client, index) => (
                             <div key={`row2-dup2-client-${index}`} className="mx-3 sm:mx-4 md:mx-6 flex-shrink-0 w-[120px] sm:w-[150px] md:w-[180px] lg:w-[200px] transition-all duration-300 hover:scale-110">
                                 <div className="flex items-center justify-center h-24 sm:h-32 md:h-40 lg:h-48 w-full">
@@ -217,7 +201,6 @@ const Clients = () => {
                                         fetchPriority="low"
                                         style={{ minHeight: '60px', minWidth: '60px' }}
                                         onError={(e) => {
-                                            console.error('Error loading image:', client.name, client.logo, e);
                                             const target = e.target as HTMLImageElement;
                                             target.style.display = 'block';
                                             target.style.opacity = '0.3';
@@ -227,7 +210,6 @@ const Clients = () => {
                                 </div>
                             </div>
                         ))}
-                        {/* Fourth set for extra buffer */}
                         {row2.map((client, index) => (
                             <div key={`row2-dup3-client-${index}`} className="mx-3 sm:mx-4 md:mx-6 flex-shrink-0 w-[120px] sm:w-[150px] md:w-[180px] lg:w-[200px] transition-all duration-300 hover:scale-110">
                                 <div className="flex items-center justify-center h-24 sm:h-32 md:h-40 lg:h-48 w-full">
@@ -240,7 +222,6 @@ const Clients = () => {
                                         fetchPriority="low"
                                         style={{ minHeight: '60px', minWidth: '60px' }}
                                         onError={(e) => {
-                                            console.error('Error loading image:', client.name, client.logo, e);
                                             const target = e.target as HTMLImageElement;
                                             target.style.display = 'block';
                                             target.style.opacity = '0.3';
@@ -253,8 +234,6 @@ const Clients = () => {
                     </div>
                 </div>
             </div>
-
-            {/* Styles for marquee animations */}
             <style>{`
                 @keyframes marquee-row1 {
                     0% { transform: translateX(0); }

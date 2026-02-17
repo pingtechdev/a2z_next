@@ -280,8 +280,8 @@ const Roadmap = () => {
   }, []);
 
   return (
-    <section id="process" className="py-8 sm:py-10 md:py-12 lg:py-16 xl:py-20 bg-white">
-      <div className="container">
+    <section id="process" className="py-8 sm:py-10 md:py-12 lg:py-16 xl:py-20 bg-white overflow-hidden">
+      <div className="container max-w-full">
         {/* Heading */}
         <div className="max-w-[50rem] mx-auto mb-8 sm:mb-10 md:mb-12 lg:mb-20 text-center px-4">
           <h2 className="h2 mb-4 text-gray-900">How We Deliver Your Orders Smoothly</h2>
@@ -335,7 +335,7 @@ const Roadmap = () => {
               variants={fadeInLeft}
               initial="hidden"
               animate="visible"
-              className="space-y-4 sm:space-y-6 order-2 lg:order-1"
+              className="space-y-4 sm:space-y-6 order-2 lg:order-1 min-w-0"
             >
               <div className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-100 rounded-full border border-blue-200">
                 <span className="text-xs sm:text-sm font-code text-blue-600">Step {steps[activeStep].id}</span>
